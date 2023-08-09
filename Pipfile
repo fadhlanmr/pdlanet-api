@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = {version = "*", extras = ["standard"]}
+selenium = "*"
+bs4 = "*"
+python-multipart = "*"
 
 [dev-packages]
 

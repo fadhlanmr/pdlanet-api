@@ -1,12 +1,12 @@
 # pdlanet-API
-A bjork can't tell it can bork 
+Collection of custom Endpoint to run with FastAPI
 
 # Running the Code Locally
 
 ### Prerequisites:
 
 1. Python3
-2. Pipenv Modules
+2. pipenv
 
 ### Instructions:
 
