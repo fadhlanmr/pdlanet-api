@@ -23,9 +23,9 @@ class web_crawl :
         os = platform.system()
         try:
             if os == 'Linux' :
-                self.browse = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+                self.browse = webdriver.Chrome(options=options)
             elif os == 'Windows' :
-                self.browse = webdriver.Chrome()
+                self.browse = webdriver.Chrome(options=options)
         except:
             raise ValueError('OS / Driver Not Supported')
 
