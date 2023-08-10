@@ -19,7 +19,7 @@ RUN pip install pipenv && \
 COPY . /app/
 
 # Expose the port on which the FastAPI application will run
-EXPOSE 8000
+EXPOSE 8090
 
 # Run the FastAPI application using Uvicorn
-CMD ["pipenv", "run", "uvicorn", "--proxy-headers", "app.main:app", "--port", "8000"]
+CMD ["pipenv", "run", "uvicorn", "--proxy-headers", "app.main:app", "--port", "8090"]
