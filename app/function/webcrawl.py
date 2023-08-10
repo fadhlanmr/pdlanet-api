@@ -15,7 +15,7 @@ class web_crawl :
         os = platform.system()
         try:
             if os == 'Linux' :
-                self.browse = webdriver.Chrome("./chromedriver")
+                self.browse = webdriver.Chrome("chromedriver")
             elif os == 'Windows' :
                 self.browse = webdriver.Chrome()
         except:
