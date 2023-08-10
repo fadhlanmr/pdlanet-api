@@ -22,4 +22,4 @@ COPY . /app/
 EXPOSE 8090
 
 # Run the FastAPI application using Uvicorn
-CMD ["pipenv", "run", "uvicorn", "--proxy-headers", "app.main:app", "--port", "8090"]
+CMD ["pipenv", "run", "uvicorn", "--proxy-headers", "app.main:app", "--host", "0.0.0.0", "--port", "8090"]
