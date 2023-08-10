@@ -9,6 +9,7 @@ uvicorn = {version = "*", extras = ["standard"]}
 selenium = "*"
 bs4 = "*"
 python-multipart = "*"
+webdriver-manager = "*"
 
 [dev-packages]
 

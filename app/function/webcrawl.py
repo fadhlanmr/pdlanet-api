@@ -1,5 +1,9 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import platform
 
 class web_crawl :
@@ -12,10 +16,14 @@ class web_crawl :
     def browser(self):
         print("Web Crawl Started, Opening Drive")
 
+        options = Options()
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         os = platform.system()
         try:
             if os == 'Linux' :
-                self.browse = webdriver.Chrome("chromedriver")
+                self.browse = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
             elif os == 'Windows' :
                 self.browse = webdriver.Chrome()
         except:
