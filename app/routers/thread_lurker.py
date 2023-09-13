@@ -8,21 +8,21 @@ router = APIRouter(
 )
 
 @router.get("/")
-async def api_request(url: str, endpoint: str, board_code:str = None, thread: str = None):
-    api_response = call_api(url, endpoint, board_code, thread)
-    if endpoint == "boards.json":
+async def api_request(url: str, endpoint: str = None, board_code:str = None, thread: str = None):
+    api_response = call_api(url=url, endpoint=endpoint, board_code=board_code, thread=thread)
+    if endpoint == "boards":
         return if_board_list(api_response, False)
-    if endpoint == "catalog.json":
+    if endpoint == "catalog":
         return if_catalog_list(api_response, False)
     return api_response
 
 @router.get("/list-board")
-async def api_board_list(url: str ='a.4cdn.org', endpoint: str = 'boards.json'):
+async def api_board_list(url: str ='a.4cdn.org', endpoint: str = 'boards'):
     api_response = call_api(url, endpoint)
     return if_board_list(api_response, True)
 
 @router.get("/list-catalog")
-async def api_catalog_list(url: str ='a.4cdn.org', endpoint: str = 'catalog.json', board_code: str = None):
+async def api_catalog_list(url: str ='a.4cdn.org', endpoint: str = 'catalog', board_code: str = None):
     api_response = list_thread(url, endpoint, board_code)
     return if_catalog_list(api_response, True)
 

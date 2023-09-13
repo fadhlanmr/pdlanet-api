@@ -15,9 +15,9 @@ def call_api (url: str, endpoint: str=None, unix=None, board_code: str=None, thr
         if thread is not None :
             url_call = f"http://{url}/{board_code}/thread/{thread}.json"
         else:
-            url_call = f"http://{url}/{board_code}/{endpoint}"
+            url_call = f"http://{url}/{board_code}/{endpoint}.json"
     else:
-        url_call = f"http://{url}/{endpoint}"
+        url_call = f"http://{url}/{endpoint}.json"
     try:
         if unix is not None :
             last_get = unix_to_gmt(unix)
@@ -42,7 +42,7 @@ def call_api (url: str, endpoint: str=None, unix=None, board_code: str=None, thr
 #call_api(url.default, endpoint.catalog, unix_to_gmt(lgb), board_code='vt')
 
 def list_thread (url: str, endpoint: str, board_code: str, thread_last_get=None) :
-    url_thread = f"http://{url}/{board_code}/{endpoint}"
+    url_thread = f"http://{url}/{board_code}/{endpoint}.json"
     try:
         if thread_last_get is not None:
             headers = {'If-Modified-Since':thread_last_get}
@@ -60,7 +60,7 @@ def list_thread (url: str, endpoint: str, board_code: str, thread_last_get=None)
         print(f"Request failed: {error}")
 
 def list_single_thread (url: str, board_code: str, thread_id: str, thread_last_get=None) :
-    url_thread = f"{url}/{board_code}/thread/{thread_id}"
+    url_thread = f"{url}/{board_code}/thread/{thread_id}.json"
     headers = {'If-Modified-Since':thread_last_get}
     response = requests.get(url_thread, headers)
     # clean some column
@@ -112,9 +112,13 @@ def if_catalog_list(list_board: list, clean_text: bool) -> list:
                     temp_dict[key]=vals.decode()
                     if clean_text :
                         temp_dict[key]=clean_html(value)
-                if key == 'time':
+                if key == 'tim':
+                    temp_dict[key]=value
+                if key == 'ext':
                     temp_dict[key]=value
                 if key == 'replies':
                     temp_dict[key]=value
+            if lists.get('tim') :
+                temp_dict['img'] = f"{lists.get('tim')}{lists.get('ext')}"
             temp_catalog.append(temp_dict)
     return temp_catalog
