@@ -27,6 +27,6 @@ async def api_catalog_list(url: str ='a.4cdn.org', endpoint: str = 'catalog', bo
     return if_catalog_list(api_response, True)
 
 @router.get("/single-thread")
-async def api_single_thread(url: str, board_2_code: str, thread_id: str):
-    api_response = list_single_thread(url, board_2_code, thread_id)
+async def api_single_thread(url: str, board_2_code: str, thread: str):
+    api_response = list_single_thread(url, board_2_code, thread)
     return api_response

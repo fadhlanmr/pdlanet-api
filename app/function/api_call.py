@@ -59,8 +59,8 @@ def list_thread (url: str, endpoint: str, board_code: str, thread_last_get=None)
     except requests.exceptions.RequestException as error:
         print(f"Request failed: {error}")
 
-def list_single_thread (url: str, board_code: str, thread_id: str, thread_last_get=None) :
-    url_thread = f"{url}/{board_code}/thread/{thread_id}.json"
+def list_single_thread (url: str, board_code: str, thread: str, thread_last_get=None) :
+    url_thread = f"{url}/{board_code}/thread/{thread}.json"
     headers = {'If-Modified-Since':thread_last_get}
     response = requests.get(url_thread, headers)
     # clean some column
