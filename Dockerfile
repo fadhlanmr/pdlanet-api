@@ -28,8 +28,8 @@ RUN apt-get install -y google-chrome-stable
 
 # install chromedriver
 RUN apt-get install -yqq unzip
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_115`/chromedriver_linux64.zip
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+RUN wget -O /tmp/chromedriver-linux64.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/115.0.5763.0/linux64/chromedriver-linux64.zip
+RUN unzip /tmp/chromedriver-linux64.zip -d /usr/local/bin/
 
 # Expose the port on which the FastAPI application will run
 EXPOSE 8090
