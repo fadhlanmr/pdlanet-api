@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-SEARCH_URL = "https://republika.co.id/search/v3/?q="
+# SEARCH_URL = "https://republika.co.id/search/v3/?q="
+SEARCH_URL = "https://search.bisnis.com/?q="
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 def fetch_republika_results(keyword):
@@ -12,6 +13,7 @@ def fetch_republika_results(keyword):
 
     soup = BeautifulSoup(response.text, "html.parser")
 
+    print(soup.prettify())  # Print the entire HTML content for debugging
     results = []
     for item in soup.select("div.news-item"):
         title_tag = item.select_one("div.news-title a")
